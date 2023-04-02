@@ -80,22 +80,7 @@ class embed(commands.Cog):
             params = params.replace("{guild.icon}", str(user.guild.icon.url))
         return params
 
-    @commands.command(name='format')
-    @commands.has_permissions(administrator=True)
-    async def format(self, ctx, *, params):
-        user = ctx.author
-        guild= ctx.guild
-        if params:
-            params=params.replace("{embed}","")
-            params=await util.embed_replacement(user,guild,params)
-            em = await self.to_embed(ctx,user,ctx.guild,params)
-            # try:
-            #     await ctx.send(embed=em)
-            #     self._last_embed = params
-            # except Exception as e:
-            #     await ctx.send(e)
-        else:
-            await ctx.send(params)
+ 
 
     @commands.command(name='newembedsteal')
     async def newembedsteal(self, ctx, message_url):
